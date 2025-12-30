@@ -1,19 +1,33 @@
-echo "============LOG ANALYSER REPORT================="
-if [ -f "sample-log.txt" ]
-then
-	echo "FilePath: " $(realpath sample-log.txt)
-else
-	echo "File does not exist"
+#!/bin/bash
+set -euo pipefail
+
+# Validate argument
+if [[ $# -ne 1 ]]; then
+  echo "Usage: $0 <log-file>"
+  exit 1
 fi
-echo "Total Lines: " $(wc -l sample-log.txt)
+
+LOG_FILE="$1"
+
+# Check if file exists
+if [[ ! -f "$LOG_FILE" ]]; then
+  echo "Error: File does not exist -> $LOG_FILE"
+  exit 1
+fi
+
+echo "============ LOG ANALYSER REPORT ================"
+echo "FilePath: $(realpath "$LOG_FILE")"
+
+# Count total lines
+echo "Total Lines: $(wc -l < "$LOG_FILE")"
 echo "------------------------------------------------"
-echo "INFO:" $(grep -o "INFO" sample-log.txt | wc -l)
-echo "WARNING: "$(grep -o "WARNING" sample-log.txt | wc -l)
-echo ERROR: $(grep -o "ERROR" sample-log.txt | wc -l)
+
+# Count log levels
+echo "INFO: $(grep -o "INFO" "$LOG_FILE" | wc -l)"
+echo "WARNING: $(grep -o "WARNING" "$LOG_FILE" | wc -l)"
+echo "ERROR: $(grep -o "ERROR" "$LOG_FILE" | wc -l)"
 echo "------------------------------------------------"
-echo "Unique IP addresses found:" $(grep -E -o "([0-9]{1,3}\.){3}[0-9]{1,3}" sample-log.txt | sort | uniq )
 
-
-
-
-
+# Extract unique IP addresses
+echo "Unique IP addresses found:"
+grep -E -o '([0-9]{1,3}\.){3}[0-9]{1,3}' "$LOG_FILE" | sort | uniq

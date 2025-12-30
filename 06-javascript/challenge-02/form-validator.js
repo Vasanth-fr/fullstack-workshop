@@ -1,98 +1,63 @@
 // Form Validator Script
-const username = document.getElementById("username");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirmPassword");
+const form = document.getElementById("registerForm");
 const submitButton = document.getElementById("submitBtn");
 
-// Function to show error message
-function showError(input, message) {
+const fields = [
+  {
+    input: document.getElementById("username"),
+    validate: value => /^[a-zA-Z0-9]{3,15}$/.test(value),
+    error: "Username must be 3–15 alphanumeric characters"
+  },
+  {
+    input: document.getElementById("email"),
+    validate: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+    error: "Invalid email format"
+  },
+  {
+    input: document.getElementById("password"),
+    validate: value => /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(value),
+    error: "Password must contain uppercase, number & symbol"
+  },
+  {
+    input: document.getElementById("confirmPassword"),
+    validate: value =>
+      value !== "" &&
+      value === document.getElementById("password").value,
+    error: "Passwords do not match"
+  }
+];
+
+// Show error
+const showError = (input, message) => {
   input.nextElementSibling.innerText = message;
-}
+};
 
-// Function to show success 
-function showSuccess(input) {
+// Clear error
+const showSuccess = input => {
   input.nextElementSibling.innerText = "";
-}
+};
 
-// Validation functions
-function validateUsername() {
-  const regex = /^[a-zA-Z0-9]{3,15}$/;
-  if (!regex.test(username.value.trim())) {
-    showError(username, "Username must be 3–15 alphanumeric characters");
-    return false;
-  }
-  showSuccess(username);
-  return true;
-}
+// Validate single field
+const validateField = field => {
+  const value = field.input.value.trim();
+  const isValid = field.validate(value);
 
-// Email validation function
-function validateEmail() {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!regex.test(email.value.trim())) {
-    showError(email, "Invalid email format");
-    return false;
-  }
-  showSuccess(email);
-  return true;
-}
+  isValid
+    ? showSuccess(field.input)
+    : showError(field.input, `${field.error}`);
 
+  return isValid;
+};
 
-// Password validation function
-function validatePassword() {
-  const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
-  if (!regex.test(password.value)) {
-    showError(password, "Password must be strong");
-    return false;
-  }
-  showSuccess(password);
-  return true;
-}
+// Validate entire form
+const validateForm = () => {
+  submitButton.disabled = !fields.every(validateField);
+};
 
-// Confirm Password validation function
-function validateConfirmPassword() {
-  if (confirmPassword.value !== password.value || confirmPassword.value === "") {
-    showError(confirmPassword, "Passwords do not match");
-    return false;
-  }
-  showSuccess(confirmPassword);
-  return true;
-}
-
-// Function to check overall form validity
-function formValidity() {
-  submitButton.disabled = !(
-    validateUsername() &&
-    validateEmail() &&
-    validatePassword() &&
-    validateConfirmPassword()
-  );
-}
-
-// Event listeners for real-time validation
-username.addEventListener("blur", () => {
-  validateUsername();
-  formValidity();
+// Attach listeners
+fields.forEach(field => {
+  field.input.addEventListener("blur", validateForm);
 });
 
-
-email.addEventListener("blur", () => {
-  validateEmail();
-  formValidity();
-});
-
-
-password.addEventListener("blur", () => {
-  validatePassword();
-  formValidity();
-});
-
-
-confirmPassword.addEventListener("blur", () => {
-  validateConfirmPassword();
-  formValidity();
-});
-
-// Prevent form submission for demonstration purposes
-document.getElementById("registerForm")
-  .addEventListener("submit", (e) => e.preventDefault());
+// Prevent actual submit
+form.addEventListener("submit", e => e.preventDefault());

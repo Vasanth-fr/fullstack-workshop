@@ -1,26 +1,26 @@
 # Review: 06-javascript
 
 **Exercise:** Exercise
-**Review Date:** 2025-12-30 12:02
+**Review Date:** 2025-12-30 15:25
 
 ---
 
 ## Status: ✅ Submitted
 
-**Files submitted:** 12
+**Files submitted:** 13
 
 ### Code Review
 
 📄 **counter.html**
    Path: `06-javascript/challenge-01/counter.html`
-   Lines: 55
+   Lines: 66
 
     - ✅ Has `<!DOCTYPE html>`
-    - 💡 Consider using semantic tags (header, nav, main, etc.)
-    - ❌ Missing viewport meta tag
+    - ✅ Uses semantic HTML5 tags
+    - ✅ Has viewport meta tag (mobile-friendly)
     - ✅ Has `lang` attribute
 
-   **Score: 3/5**
+   **Score: 5/5**
 
 📄 **counter.js**
    Path: `06-javascript/challenge-01/counter.js`
@@ -29,44 +29,44 @@
     - ✅ Uses `const`/`let` (no `var`)
     - ✅ Uses strict equality (`===`)
     - ✅ Uses arrow functions
-    - 💡 Consider using template literals for string interpolation
-    - 💡 Consider using array methods (map, filter, reduce)
+    - ✅ Uses template literals
+    - ✅ Uses modern array methods
 
-   **Score: 3/5**
+   **Score: 5/5**
 
 📄 **form-validator.html**
    Path: `06-javascript/challenge-02/form-validator.html`
-   Lines: 43
+   Lines: 54
 
     - ✅ Has `<!DOCTYPE html>`
-    - 💡 Consider using semantic tags (header, nav, main, etc.)
-    - ❌ Missing viewport meta tag
+    - ✅ Uses semantic HTML5 tags
+    - ✅ Has viewport meta tag (mobile-friendly)
     - ✅ Has `lang` attribute
 
-   **Score: 3/5**
+   **Score: 5/5**
 
 📄 **form-validator.js**
    Path: `06-javascript/challenge-02/form-validator.js`
-   Lines: 98
+   Lines: 63
 
     - ✅ Uses `const`/`let` (no `var`)
     - ✅ Uses strict equality (`===`)
     - ✅ Uses arrow functions
-    - 💡 Consider using template literals for string interpolation
-    - 💡 Consider using array methods (map, filter, reduce)
+    - ✅ Uses template literals
+    - ✅ Uses modern array methods
 
-   **Score: 3/5**
+   **Score: 5/5**
 
 📄 **todo.html**
    Path: `06-javascript/challenge-03/todo.html`
-   Lines: 32
+   Lines: 43
 
     - ✅ Has `<!DOCTYPE html>`
-    - 💡 Consider using semantic tags (header, nav, main, etc.)
-    - ❌ Missing viewport meta tag
-    - 💡 Add `lang` attribute to `<html>` tag
+    - ✅ Uses semantic HTML5 tags
+    - ✅ Has viewport meta tag (mobile-friendly)
+    - ✅ Has `lang` attribute
 
-   **Score: 2/5**
+   **Score: 5/5**
 
 📄 **todo.js**
    Path: `06-javascript/challenge-03/todo.js`
@@ -104,6 +104,18 @@
 
    **Score: 4/5**
 
+📄 **event-emmiter.js**
+   Path: `06-javascript/challenge-10/event-emmiter.js`
+   Lines: 50
+
+    - ✅ Uses `const`/`let` (no `var`)
+    - ✅ Uses strict equality (`===`)
+    - ✅ Uses arrow functions
+    - 💡 Consider using template literals for string interpolation
+    - ✅ Uses modern array methods
+
+   **Score: 4/5**
+
 📄 **deep-clone.js**
    Path: `06-javascript/challenge-11/deep-clone.js`
    Lines: 64
@@ -130,17 +142,17 @@
 
 📄 **validate-password.js**
    Path: `06-javascript/challenge-13/validate-password.js`
-   Lines: 75
+   Lines: 62
 
     - ✅ Uses `const`/`let` (no `var`)
     - ✅ Uses strict equality (`===`)
-    - 💡 Consider using arrow functions
+    - ✅ Uses arrow functions
     - 💡 Consider using template literals for string interpolation
-    - 💡 Consider using array methods (map, filter, reduce)
+    - ✅ Uses modern array methods
 
-   **Score: 2/5**
+   **Score: 4/5**
 
-### Topic Score: 36 / 55 (65%)
+### Topic Score: 53 / 60 (88%)
 
 ---
 

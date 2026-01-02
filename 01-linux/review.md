@@ -1,7 +1,7 @@
 # Review: 01-linux
 
 **Exercise:**  Exercise: Log File Analyzer Script
-**Review Date:** 2026-01-02 13:54
+**Review Date:** 2026-01-02 16:46
 
 ---
 
@@ -71,7 +71,7 @@ Relevance check not configured for this topic
 
 ## Challenge
 
-**Status:** ✅ Submitted (1 files)
+**Status:** ✅ Submitted (2 files)
 
 ### Challenge Relevance Check
 
@@ -90,7 +90,18 @@ Relevance check not configured for this topic
 
    **Score: 5/5**
 
-### Challenge Score: 5 / 5 (100%)
+📄 **process-monitor.sh**
+   Lines: 17
+
+    - ✅ Has shebang (`#!/bin/bash`)
+    - ✅ Has error handling (`set -e`)
+    - ✅ Handles command-line arguments
+    - ✅ Has comments (3 lines)
+    - ✅ Variables are properly quoted
+
+   **Score: 5/5**
+
+### Challenge Score: 10 / 10 (100%)
 
 
 ---
